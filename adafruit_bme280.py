@@ -27,7 +27,6 @@ CircuitPython driver from BME280 Temperature, Humidity and Barometic Pressure se
 
 * Author(s): ladyada
 """
-import math
 from time import sleep
 from micropython import const
 try:
@@ -131,8 +130,6 @@ class Adafruit_BME280:
         self._read_coefficients()
         self._write_ctrl_meas()
         self._write_config()
-        self.sea_level_pressure = 1013.25
-        """Pressure in hectoPascals at sea level. Used to calibrate `altitude`."""
         self._t_fine = None
 
     def _read_temperature(self):
@@ -395,13 +392,6 @@ reading the calibration registers")
             return _BME280_HUMIDITY_MIN
         # else...
         return humidity
-
-    @property
-    def altitude(self):
-        """The altitude based on current ``pressure`` versus the sea level pressure
-           (``sea_level_pressure``) - which you must enter ahead of time)"""
-        pressure = self.pressure # in Si units for hPascal
-        return 44330 * (1.0 - math.pow(pressure / self.sea_level_pressure, 0.1903))
 
     def _read_coefficients(self):
         """Read & save the calibration coefficients"""
