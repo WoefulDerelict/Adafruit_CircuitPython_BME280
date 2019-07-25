@@ -13,12 +13,8 @@ bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
 #bme_cs = digitalio.DigitalInOut(board.D10)
 #bme280 = adafruit_bme280.Adafruit_BME280_SPI(spi, bme_cs)
 
-# change this to match the location's pressure (hPa) at sea level
-bme280.sea_level_pressure = 1013.25
-
 while True:
     print("\nTemperature: %0.1f C" % bme280.temperature)
     print("Humidity: %0.1f %%" % bme280.humidity)
     print("Pressure: %0.1f hPa" % bme280.pressure)
-    print("Altitude = %0.2f meters" % bme280.altitude)
     time.sleep(2)
