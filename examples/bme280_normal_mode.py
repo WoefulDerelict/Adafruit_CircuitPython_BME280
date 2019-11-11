@@ -24,7 +24,7 @@ bme280.iir_filter = adafruit_bme280.IIR_FILTER_X16
 bme280.overscan_pressure = adafruit_bme280.OVERSCAN_X16
 bme280.overscan_humidity = adafruit_bme280.OVERSCAN_X1
 bme280.overscan_temperature = adafruit_bme280.OVERSCAN_X2
-#The sensor will need a moment to gather inital readings
+# The sensor will need a moment to gather initial readings
 time.sleep(1)
 
 while True:
